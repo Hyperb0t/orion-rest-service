@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: "orion-rest-service"
+  datasource:
+    driver-class-name: "org.postgresql.Driver"
+    url: "jdbc:postgresql://localhost/orion-rest-service"
+    username: postgres
+    password: cbhma8hq
+  jpa:
+    hibernate:
+      ddl-auto: create
+logging:
+  file:
+    name: spring.log
+server:
+  port: 8080
