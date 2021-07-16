@@ -1,23 +1,26 @@
 package ru.itis.orionrestservice.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Table(name = "product", schema = "public")
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private Integer price;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
+    @JsonManagedReference
+    @ToString.Exclude
+    private List<AccessLogEntry> logEntry;
 }

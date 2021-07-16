@@ -8,9 +8,18 @@ spring:
     password: cbhma8hq
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+
 logging:
   file:
     name: spring.log
+  level:
+    org:
+      hibernate:
+        type: info
 server:
   port: 8080
